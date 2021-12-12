@@ -69,6 +69,6 @@ public class Movie {
 	}
 	
 	public String toString() {
-		return "movie[id=" + this.Id + ",title= " + this.title + "year=" + this.year + "]";
+		return "movie[id=" + this.Id + ",title= " + this.title + ",year=" + this.year + "]";
 	}
 }
