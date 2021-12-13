@@ -47,8 +47,7 @@ public class CsvToH2 {
 	public void loadMoviesCsv() throws IOException, CsvException {
 		try {
 			PreparedStatement prepStatement;
-			Statement stmt = null;
-
+			
 			// Create H2 DB Connection Object
 			Connection conn = null;
 			// Register JDBC driver
@@ -57,8 +56,7 @@ public class CsvToH2 {
 			// Open a connection
 			log.info("Connecting to database...");
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
-			stmt = conn.createStatement();
-			String line = "";
+			conn.createStatement();
 			char splitBy = ';';
 			ClassLoader classLoader = getClass().getClassLoader();
 			String path = classLoader.getResource("movielist.csv").getPath();
@@ -79,11 +77,9 @@ public class CsvToH2 {
 
 			// Read all data at once
 			List<String[]> allData = csvReader.readAll();
-			int count = 0;
 			int idMovie = 0;
 			log.info("Inserting movies...");
 			for (String[] row : allData) {
-				count++;
 				String year = adjust(row, 0);
 				String title = adjust(row, 1);
 				String winner = row[4];
@@ -111,7 +107,7 @@ public class CsvToH2 {
 
 					prepStatement.setString(1, cell);
 					prepStatement.setInt(2, idMovie);
-					int aux = prepStatement.executeUpdate();
+					prepStatement.executeUpdate();
 					conn.commit();
 
 				}
@@ -123,7 +119,7 @@ public class CsvToH2 {
 
 					prepStatement.setString(1, cell);
 					prepStatement.setInt(2, idMovie);
-					int aux = prepStatement.executeUpdate();
+					prepStatement.executeUpdate();
 					conn.commit();
 				}
 

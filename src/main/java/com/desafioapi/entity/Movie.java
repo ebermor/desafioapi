@@ -1,6 +1,5 @@
 package com.desafioapi.entity;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,7 +13,7 @@ import javax.persistence.Table;
 
 @Table(name = "movie")
 @Entity
-public class Movie implements Serializable {
+public class Movie {
 	
 	@javax.persistence.Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
