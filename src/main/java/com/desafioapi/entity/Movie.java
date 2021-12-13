@@ -1,5 +1,6 @@
 package com.desafioapi.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 
 @Table(name = "movie")
 @Entity
-public class Movie {
+public class Movie implements Serializable {
 	
 	@javax.persistence.Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +26,7 @@ public class Movie {
 	private String title;
 	
 	@Column
-	private boolean winner;
+	private String winner;
 
 	@Column(nullable = false)
 	private int year;	
@@ -48,7 +49,7 @@ public class Movie {
 		return this.title;
 	}
 	
-	public boolean getWinner() {
+	public String getWinner() {
 		return this.winner;
 	}
 	public int getYear() {
@@ -59,7 +60,7 @@ public class Movie {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public void setWinner(boolean winner) {
+	public void setWinner(String winner) {
 		this.winner = winner;
 		
 	}

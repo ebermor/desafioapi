@@ -1,10 +1,13 @@
 package com.desafioapi.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +21,7 @@ import com.desafioapi.services.MovieService;
 import com.desafioapi.response.Response;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/movie")
 @CrossOrigin(origins = "*")
 public class MovieController {
 	private static final org.slf4j.Logger log = LoggerFactory.getLogger(MovieController.class);
@@ -36,7 +39,7 @@ public class MovieController {
 	 * @param Id
 	 * @return ResponseEntity<Response<MovieDto>>
 	 */
-	@GetMapping("/movie/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Response<MovieDto>> findById(@PathVariable("id") Long Id){
 		
 		Response<MovieDto> response = new Response<MovieDto>();
@@ -52,9 +55,27 @@ public class MovieController {
 		
 		
 	}
+	
+	@GetMapping("/")
+	public ResponseEntity<Response<List<MovieDto>>> findAll(){
+		Response<List<MovieDto>> response = new Response<List<MovieDto>>();
+		
+		List<Movie> movies = movieService.findAll();
+		
+		List<MovieDto> movieDto = new ArrayList<MovieDto>();
+		
+	    
+		for (Movie name : movies) {
+		    movieDto.add(convertMovieDto(name));
+		}
+		
+		response.setData(movieDto);
+		return ResponseEntity.ok(response);
+		
+		
+	}
 
 	private MovieDto convertMovieDto(Movie movie) {
-		log.info("movie" + movie.getTitle());
 		MovieDto movieDto  = new MovieDto();
 		movieDto.setId(movie.getId());
 		movieDto.setTitle(movie.getTitle());

@@ -15,8 +15,8 @@ public class DesafioapiApplication {
 
 	public static void main(String[] args) throws IOException, CsvException {
 		SpringApplication.run(DesafioapiApplication.class, args);
-//		CsvToH2 loadCsv = new CsvToH2();
-//		loadCsv.loadteste();
+		CsvToH2 loadCsv = new CsvToH2();
+		loadCsv.loadMoviesCsv();
 	}
 
 }

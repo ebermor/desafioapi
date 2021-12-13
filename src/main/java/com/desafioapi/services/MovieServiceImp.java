@@ -1,5 +1,6 @@
 package com.desafioapi.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -16,12 +17,6 @@ public class MovieServiceImp implements MovieService {
 
 	@Autowired
 	private MovieRepository movieRepository;
-	
-	@Override
-	public Movie insert(Movie movie) {
-		
-		return movieRepository.save(movie);
-	}
 
 	@Override
 	public Optional<Movie> buscarPorId(Long Id) {
@@ -29,6 +24,12 @@ public class MovieServiceImp implements MovieService {
 		
 		return movieRepository.findById(Id);
 		
+	}
+
+	@Override
+	public List<Movie> findAll() {
+		
+		return movieRepository.findAll();
 	}
 
 }

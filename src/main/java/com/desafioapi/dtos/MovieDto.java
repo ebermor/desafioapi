@@ -3,7 +3,7 @@ package com.desafioapi.dtos;
 public class MovieDto {
 	private Long id;
 	private String title;
-	private boolean winner;
+	private String winner;
 	
 	public Long getId() {
 		return id;
@@ -17,10 +17,10 @@ public class MovieDto {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public boolean isWinner() {
+	public String isWinner() {
 		return winner;
 	}
-	public void setWinner(boolean winner) {
+	public void setWinner(String winner) {
 		this.winner = winner;
 	}
 	

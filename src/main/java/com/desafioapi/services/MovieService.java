@@ -1,5 +1,6 @@
 package com.desafioapi.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.desafioapi.entity.Movie;
@@ -13,11 +14,7 @@ public interface MovieService {
 	 */
 	Optional<Movie> buscarPorId(Long Id);
 	
-	/**
-	 * Insert new movie in database
-	 * @param movie
-	 * @return
-	 */
-	Movie insert(Movie movie);
+	List<Movie> findAll();
+
 
 }
