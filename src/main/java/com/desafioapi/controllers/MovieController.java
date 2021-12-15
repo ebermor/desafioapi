@@ -28,7 +28,7 @@ public class MovieController {
 	private MovieService movieService;
 
 	public MovieController() {
-		log.info("OCNTROLLER START");
+		
 
 	}
 

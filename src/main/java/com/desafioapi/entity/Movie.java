@@ -27,7 +27,7 @@ public class Movie {
 	@Column
 	private String winner;
 
-	@Column(nullable = false)
+	@Column(nullable = false) 
 	private int year;	
 	
 	

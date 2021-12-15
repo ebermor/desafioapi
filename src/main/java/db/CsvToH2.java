@@ -47,7 +47,7 @@ public class CsvToH2 {
 	public void loadMoviesCsv() throws IOException, CsvException {
 		try {
 			PreparedStatement prepStatement;
-			
+
 			// Create H2 DB Connection Object
 			Connection conn = null;
 			// Register JDBC driver
@@ -80,9 +80,9 @@ public class CsvToH2 {
 			int idMovie = 0;
 			log.info("Inserting movies...");
 			for (String[] row : allData) {
-				String year = adjust(row, 0);
-				String title = adjust(row, 1);
-				String winner = row[4];
+				String year = adjust(row, 0).trim();
+				String title = adjust(row, 1).trim();
+				String winner = row[4].trim();
 				// adjust winner
 				winner = winner.equalsIgnoreCase("yes") ? winner : "no";
 
@@ -99,25 +99,27 @@ public class CsvToH2 {
 				rs = prepStatement.getGeneratedKeys();
 				rs.next();
 				idMovie = rs.getInt(1);
-				
+
 				// iterate studios
-				String[] studios = adjust(row, 2).split(",");
+
+				String[] studios = adjust(row, 2).replaceAll("and", ",").split(",");
+
 				for (String cell : studios) {
 					prepStatement = conn.prepareStatement("INSERT INTO STUDIO ( name, movie_id) VALUES ( ?, ?)");
 
-					prepStatement.setString(1, cell);
+					prepStatement.setString(1, cell.trim());
 					prepStatement.setInt(2, idMovie);
 					prepStatement.executeUpdate();
 					conn.commit();
 
 				}
 				// iterate producer
-				String[] producers = adjust(row, 3).split(",");
+				String[] producers = adjust(row, 3).replaceAll("and", ",").split(",");
 
 				for (String cell : producers) {
 					prepStatement = conn.prepareStatement("INSERT INTO PRODUCER ( name, movie_id) VALUES ( ?, ?)");
 
-					prepStatement.setString(1, cell);
+					prepStatement.setString(1, cell.trim());
 					prepStatement.setInt(2, idMovie);
 					prepStatement.executeUpdate();
 					conn.commit();
