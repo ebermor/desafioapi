@@ -1,6 +1,5 @@
 package com.desafioapi.controllers;
 
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,8 +16,6 @@ import winners.IntervalWinners;
 @RequestMapping("/api/producer")
 @CrossOrigin(origins = "*")
 public class ProducerController {
-	private static final org.slf4j.Logger log = LoggerFactory.getLogger(MovieController.class);
-
 	@Autowired
 	private ProducerService producerService;
 

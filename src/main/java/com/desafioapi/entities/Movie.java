@@ -1,4 +1,4 @@
-package com.desafioapi.entity;
+package com.desafioapi.entities;
 
 import java.util.List;
 
@@ -14,12 +14,9 @@ import javax.persistence.Table;
 @Table(name = "movie")
 @Entity
 public class Movie {
-	
 	@javax.persistence.Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-	
-	
 	
 	@Column(length = 255, nullable = false)
 	private String title;
@@ -33,11 +30,11 @@ public class Movie {
 	
 	@OneToMany
 	@JoinTable(name = "STUDIO", joinColumns = @JoinColumn(name = "MOVIE_ID"), inverseJoinColumns = @JoinColumn(name = "ID"))
-	private List<Studio> studios;
+	public List<Studio> studios ;
 	
 	@OneToMany
 	@JoinTable(name = "PRODUCER", joinColumns = @JoinColumn(name = "MOVIE_ID"), inverseJoinColumns = @JoinColumn(name = "ID"))
-	private List<Producer> producers;
+	public List<Producer> producers;
 
     //Getter
 	public Long getId() {

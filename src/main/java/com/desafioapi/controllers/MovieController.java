@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.desafioapi.dtos.MovieDto;
-import com.desafioapi.entity.Movie; 
+import com.desafioapi.entities.Movie;
 import com.desafioapi.services.MovieService;
 import com.desafioapi.response.Response;
 

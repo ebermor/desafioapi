@@ -1,4 +1,4 @@
-package com.desafioapi.entity;
+package com.desafioapi.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,22 +6,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
 
-
-@Table(name = "studio")
+@Table(name = "producer")
 @Entity
-public class Studio {
+
+public class Producer {
 	
 	@javax.persistence.Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
     private Long Id;
 	
-	
-	@Column(length = 255 ,nullable = false)
+	@Column(length = 255)
 	private String Name;
 	
-	
-	//Getter
+	//getter
 	public Long getId() {
 		return this.Id;
 	}
@@ -36,7 +33,9 @@ public class Studio {
 	}
 	
 	public String toString() {
-		return "studio[id=" + this.Id + ",name=" + this.Name + "]";
+		return "producer[id=" + this.Id + ",name=" + this.Name + "]";
 	}
-
+	
+	
+	
 }

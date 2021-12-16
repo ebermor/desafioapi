@@ -3,7 +3,7 @@ package com.desafioapi.services;
 import java.util.List;
 import java.util.Optional;
 
-import com.desafioapi.entity.Movie;
+import com.desafioapi.entities.Movie;
 
 public interface MovieService {
 	
